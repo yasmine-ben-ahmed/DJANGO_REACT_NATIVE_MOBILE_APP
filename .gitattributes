@@ -1,11 +1,10 @@
-# Set the default behavior, in case people don't have core.autocrlf set.
-* text=auto
-
 # Force these text files to use LF
 *.sh text eol=lf
 *.yml text eol=lf
 *.yaml text eol=lf
 *.py text eol=lf
+*.pyc text eol=lf
+*.pyi text eol=lf
 *.js text eol=lf
 *.json text eol=lf
 

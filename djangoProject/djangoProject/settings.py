@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-)f4$xnn1#l9-*f2el51+$trewa5ny6fq-ua0g3le3z@_l^t%*y
 DEBUG = True
 
 #ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-ALLOWED_HOSTS = ['localhost','192.168.84.243', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost','192.168.0.120', '127.0.0.1']
 
 
 INSTALLED_APPS = [
@@ -28,8 +28,11 @@ INSTALLED_APPS = [
     'userAPI',
     'myApp',
     'appSettings',
+    'managePJ',
     'rest_framework',
     'corsheaders',
+    'location_field.apps.DefaultConfig',
+    'django.contrib.gis',
 ]
 
 REST_FRAMEWORK = {
@@ -68,7 +71,7 @@ ROOT_URLCONF = 'djangoProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -114,6 +117,40 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+MEDIA_URL ='/images/'
+MEDIA_ROOT=os.path.join(BASE_DIR,'static/images')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Configurations pour l'envoi d'e-mails
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'smtp.gmail.com'
+
+EMAIL_PORT = 587
+
+EMAIL_USE_TLS=True
+
+EMAIL_HOST_USER='benahmedyasmin@gmail.com'
+
+EMAIL_HOST_PASSWORD='fnyxlbkzhvuxdjma'
+
+LOCATION_FIELD = {
+    'provider.openstreetmap.max_zoom': 18,
+}
+
+LOCATION_FIELD = {
+    'map.provider': 'openstreetmap',
+    'search.provider': 'nominatim',
+}
+
+
+MQTT_SERVER = 'eu1.cloud.thethings.network'
+MQTT_PORT = 1883
+MQTT_KEEPALIVE = 60
+MQTT_USER = 'my-lora1-application@ttn'
+MQTT_PASSWORD = 'NNSXS.DGNPFLTCMI5K74KZJC3NYRPWVM2ONZW76NSKP3Y.SDCRYFWFV5MTZUWWPUOKSZBVY5Z5LCZB7BWRLI6YC5EKQ3MJKDNQ'

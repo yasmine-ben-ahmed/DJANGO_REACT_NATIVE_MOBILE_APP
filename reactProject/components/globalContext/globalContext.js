@@ -6,7 +6,7 @@ const Context = createContext()
 const Provider = ( { children } ) => {
 
 
-  const [ domain, setDomain ] = useState("http://192.168.84.243:8000")
+  const [ domain, setDomain ] = useState("http://192.168.0.120:8000")
   const [ isLoggedIn, setIsLoggedIn ] = useState(false)
   const [ userObj, setUserObj ] = useState()
   const [ appSettings, setAppSettings ] = useState({})

@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SFG - Together We Protect Our Forests!</title>
+    <link rel="icon" type="image/png" href="{% static 'images/logo4.png' %}">
+
+    <!-- Bootstrap Core CSS -->
+    
+
+    <link href="{% static 'index/asset/css/bootstrap.min.css' %}" rel="stylesheet" />
+    
+    <!-- Font Awesome CSS -->
+    
+    <link href="{% static 'index/css/font-awesome.min.css' %}" rel="stylesheet" />
+    
+    
+    <!-- Animate CSS -->
+    
+    <link href="{% static 'index/css/animate.css' %}" rel="stylesheet" />
+    
+    <!-- Owl-Carousel -->
+    
+    <link href="{% static 'index/css/owl.carousel.css' %}" rel="stylesheet" />
+   
+    <link href="{% static 'index/css/owl.theme.css' %}" rel="stylesheet" />
+   
+    <link href="{% static 'index/css/owl.transitions.css' %}" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+   
+    <link href="{% static 'index/css/style.css' %}" rel="stylesheet" />
+  
+    <link href="{% static 'index/css/responsive.css' %}" rel="stylesheet" />
+    
+    <!-- Colors CSS -->
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'index/css/color/green.css' %}"  />
+    
+    
+    
+    <!-- Colors CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'index/css/color/green.css' %}" title="green">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'index/css/color/light-red.css' %}" title="light-red">
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'index/css/color/blue.css' %}" title="blue">
+
+
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'index/css/color/light-blue.css' %}" title="light-blue">
+    
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'index/css/color/yellow.css' %}" title="yellow">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'index/css/color/light-green.css' %}" title="light-green">
+
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    
+    
+    <!-- Modernizer js -->
+    
+
+    <script src="{% static 'index/js/modernizr.custom.js' %}"></script>
+
+
+    
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body class="index">
+    
+    
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top" >Smart For Green</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#feature">Feature</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#portfolio">Issues</a>
+                    </li>               
+                    <li>
+                        <a class="page-scroll" href="#pricing">Sollution</a>
+                    </li>
+
+                    <li >
+                        <a class="page-scroll"  href="{% url 'connectas' %}"> <span style="font-weight: bolder; font-size: 18px;">Login</span> </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    
+    
+    
+    <!-- Start Home Page Slider -->
+    <section id="page-top">
+        <!-- Carousel -->
+        <div id="main-slide" class="carousel slide" data-ride="carousel">
+
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#main-slide" data-slide-to="0" class="active"></li>
+                <li data-target="#main-slide" data-slide-to="1"></li>
+                <li data-target="#main-slide" data-slide-to="2"></li>
+            </ol>
+            <!--/ Indicators end-->
+
+            <!-- Carousel inner -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img class="img-responsive" src="{% static 'index/images/9.jpg' %}" alt="slider">
+                    <div class="slider-content">
+                        <div class="col-md-12 text-center">
+                            <h1 class="animated1">
+                    		  <span>Welcome to <strong>SFG</strong></span>
+                    	    </h1>
+                            <p class="animated2">Where Innovation Meets Sustainability!<br> Join us in revolutionizing intelligent agriculture <br> and protecting our environment for a greener future.</p>
+                            <a  href="" class="page-scroll btn btn-primary animated3">Start Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!--/ Carousel item end -->
+                
+                <div class="item">
+                    <!-- <img class="img-responsive" src="images/header-back.png" alt="slider"> -->
+                    <img src="{% static 'index/images/10.jpg' %}" class="img-responsive" alt="slider">
+                    
+                    <div class="slider-content">
+                        <div class="col-md-12 text-center">
+                            <h1 class="animated3">
+                                <span><strong>SFG</strong> for the highest</span>
+                            </h1>
+                            <p class="animated2">Reaching New Heights in Intelligent Agriculture. <br>We strive for excellence, <br>pushing the boundaries of innovation to achieve the highest standards<br> in sustainable farming practices.</p>	
+                            <a  href="" class="page-scroll btn btn-primary animated1">Start Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!--/ Carousel item end -->
+                
+                <div class="item">
+                    <!-- <img class="img-responsive" src="images//galaxy.jpg" alt="slider"> -->
+                    <img src="{% static 'index/images/2.jpg' %}" class="img-responsive" alt="slider">
+                    <div class="slider-content">
+                        <div class="col-md-12 text-center">
+                            <h1 class="animated2">
+                                <span>The way of <strong>Success</strong></span>
+                            </h1>
+                            <p class="animated1">Fueling Innovation, Igniting Collaboration. <br>We thrive on pioneering new ideas and fostering a collaborative spirit, <br>paving the path to success in intelligent agriculture.</p>	
+                             <a class="animated3 slider btn btn-primary btn-min-block"  href="" >Start Now</a>
+                                
+                        </div>
+                    </div>
+                </div>
+                <!--/ Carousel item end -->
+            </div>
+            <!-- Carousel inner end-->
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#main-slide" data-slide="prev">
+                <span><i class="fa fa-angle-left"></i></span>
+            </a>
+            <a class="right carousel-control" href="#main-slide" data-slide="next">
+                <span><i class="fa fa-angle-right"></i></span>
+            </a>
+        </div>
+        <!-- /carousel -->
+    </section>
+    <!-- End Home Page Slider -->
+
+    
+    
+    <!-- Start Feature Section -->
+        <section id="feature" class="feature-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="feature">
+                            <i class="fa fa-magic"></i>
+                            <div class="feature-content">
+                                <h4>Intelligent IoT-Based System</h4>
+                                <p>Highlight the use of an intelligent IoT-based system that utilizes a low-cost Lora sensor node to measure climatic parameters for predicting forest fires and major crop incidents. Emphasize how this advanced technology enhances accuracy and efficiency in fire prediction.</p>
+                            </div>
+                        </div>
+                    </div><!-- /.col-md-3 -->
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="feature">
+                            <i class="fa fa-signal"></i>
+                            <div class="feature-content">
+                                <h4>Long-Range Communication</h4>
+                                <p>Showcase the system's long-range communication capabilities through the Lora network. Explain how this feature enables seamless data transmission over large distances, allowing for effective monitoring and timely alert generation.</p>
+                            </div>
+                        </div>
+                    </div><!-- /.col-md-3 -->
+                    
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="feature">
+                            <i class="fa fa-globe"></i>
+                            <div class="feature-content">
+                                <h4>Web Application</h4>
+                                <p>Describe the development of a user-friendly web application that receives fire prediction alerts. Explain how this application allows users to easily understand the fire risk in their region by displaying the most up-to-date information on forest fires.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="feature">
+                            <i class="fa fa-clock-o"></i>
+
+                            <div class="feature-content">
+                                <h4>Real-Time Information</h4>
+                                <p>Highlight how the system provides real-time information on forest fires, allowing users to stay informed about the current fire situations and make informed decisions accordingly.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.row -->
+            
+            </div><!-- /.container -->
+        </section>
+        <!-- End Feature Section -->
+    
+    
+    <!-- Start Call to Action Section -->
+    <section class="call-to-action">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Experience the transformative power of Smart Agriculture, where cutting-edge technology and data-driven solutions revolutionize farming practices. <br> Embrace innovation, increase efficiency, and cultivate a sustainable future for agriculture.</h1>
+                    <!-- <button type="submit" class="btn btn-primary">Read more</button> -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Call to Action Section -->
+    
+    
+    
+    <!-- Start Issues Section -->
+        <section id="portfolio" class="portfolio-section-1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-title text-center">
+                            <h3>Issues</h3>
+                            <p>Environmental Impact: Addressing CO2 Emissions and Forest Fire Consequences.</p>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        
+                        <!-- Start Portfolio items -->
+                        <ul id="portfolio-list">
+
+                            <li>
+                                <div class="portfolio-item">
+                                    <!-- <img src="images/portfolio/img4.jpg" class="img-responsive" alt="" /> -->
+                                    <img src="{% static 'images/fire12.jpg' %}" class="img-responsive" alt="...">
+
+                                    <div class="portfolio-caption">
+                                        <h4>How Forest Fires Contribute to Rising CO2 Emissions</h4>
+                                       
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="portfolio-item">
+                                    <!-- <img src="images/portfolio/img5.jpg" class="img-responsive" alt="" /> -->
+                                    <img src="{% static 'images/fire22.jpg' %}" class="img-responsive" alt="...">
+
+                                    <div class="portfolio-caption">
+                                        <h4>The huge desaster</h4>
+                                      
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="portfolio-item">
+                                    <!-- <img src="images/portfolio/img6.jpg" class="img-responsive" alt="" /> -->
+                                    <img src="{% static 'images/fire42.jpg' %}" class="img-responsive" alt="...">
+
+                                    <div class="portfolio-caption">
+                                        <h4>Not only co2 ...</h4>
+                                       
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            
+                        </ul>
+                        <!-- End Portfolio items -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Issues Section -->
+    
+    <!-- Start Issues Modal Section -->
+        <div class="section-modal modal fade" id="portfolio-modal1" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title text-center">
+                            <h3>CO2 emissions and climate change</h3>
+                            <span class="text-muted">Planet conditions...</span>
+                            <p> Carbon dioxide emissions are the primary driver of global climate change. It’s widely recognized that to avoid the worst impacts of climate change, the world needs to urgently reduce emissions.
+                                Since humans are adding more CO2 to the atmosphere, that helps explain why temperatures are increasing around the world. Global warming describes the current rise in the average temperature of Earth's air and oceans, which is often described as the most recent example of climate change.
+                            </p>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; margin-top: -200px;">
+                        <img src="{% static 'images/co22.jpg' %}" class="img-responsive" alt="...">
+                    </div>
+                    
+                    
+                </div>                
+            </div>
+        </div>
+        <!-- End Portfolio Modal Section -->
+
+            <!-- Start Issues Modal Section -->
+            <div class="section-modal modal fade" id="portfolio-modal2" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal">
+                        <div class="lr">
+                            <div class="rl">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="container">
+                        <div class="row">
+                            <div class="section-title text-center">
+                                <h3>Forest and climate change</h3>
+                                <span class="text-muted">Forests act as carbon sinks...</span>
+                                <p> Forests capture carbon from the atmosphere in the trees and soils. Some of this carbon ends up on the ground as fallen litter,
+                                    and accumulates in the soil. Soils are one of the biggest carbon reservoirs on earth,
+                                    storing more of this element than the atmosphere and the aboveground biomass put together.
+                                    Deforestation and forest degradation account for about 10 percent of global greenhouse gas emissions caused by humans. Protecting and restoring forests can help mitigate climate change by absorbing carbon dioxide and providing other ecosystem services.
+                                </p>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center; height: 100vh; margin-top: -200px;">
+                            <img src="{% static 'images/co32.jpg' %}" class="img-responsive" alt="...">
+                        </div>
+                        
+                        
+                    </div>                
+                </div>
+            </div>
+            <!-- End Portfolio Modal Section -->
+
+            <div class="section-modal modal fade" id="portfolio-modal3" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal">
+                        <div class="lr">
+                            <div class="rl">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="container">
+                        <div class="row">
+                            <div class="section-title text-center">
+                                <h3>The Growing Threat of Global CO2 Emissions</h3>
+                                <span class="text-muted">Forests act as carbon sinks...</span>
+                                <p> This alarming trend shows no signs of slowing down. Join the fight against climate change and help protect our planet  </p>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center; height: 100vh; margin-top: -200px;">
+                            <img src="{% static 'images/ticc2.png' %}" class="img-responsive" alt="...">
+                        </div>
+                        
+                        
+                    </div>                
+                </div>
+            </div>
+
+            <div class="section-modal modal fade" id="portfolio-modal4" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal">
+                        <div class="lr">
+                            <div class="rl">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="container">
+                        <div class="row">
+                            <div class="section-title text-center">
+                                <h3>How Forest Fires Contribute to Rising CO2 Emissions</h3>
+                                
+                                <p> Forest fires can release significant amounts of carbon dioxide (CO2) into the atmosphere. 
+                                    When trees and other vegetation burn, they release stored carbon into the air, adding to the amount of CO2 already present. </p>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center; height: 100vh; margin-top: -200px;">
+                            <img src="{% static 'images/fire12.jpg' %}" class="img-responsive" alt="...">
+                        </div>
+                        
+                        
+                    </div>                
+                </div>
+            </div>
+
+            <div class="section-modal modal fade" id="portfolio-modal5" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal">
+                        <div class="lr">
+                            <div class="rl">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="container">
+                        <div class="row">
+                            <div class="section-title text-center">
+                                <h3>The huge desaster</h3>
+                                
+                                <p> The amount of CO2 released during a forest fire depends on the severity and duration of the fire, as well as the type and amount of vegetation burned. 
+                                    Large-scale forest fires can release millions of tonnes of CO2 into the atmosphere, contributing to global warming and climate change. </p>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center; height: 100vh; margin-top: -200px;">
+                            <img src="{% static 'images/fire22.jpg' %}" class="img-responsive" alt="...">
+                        </div>
+                        
+                        
+                    </div>                
+                </div>
+            </div>
+
+            <div class="section-modal modal fade" id="portfolio-modal6" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal">
+                        <div class="lr">
+                            <div class="rl">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="container">
+                        <div class="row">
+                            <div class="section-title text-center">
+                                <h3>Not only co2 ...</h3>
+                                
+                                <p> In addition to CO2, forest fires can also release other greenhouse gases like methane (CH4) and nitrous oxide (N2O) into the atmosphere. 
+                                    These gases can trap heat and contribute to global warming.</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center; height: 100vh; margin-top: -200px;">
+                            <img src="{% static 'images/fire42.jpg' %}" class="img-responsive" alt="...">
+                        </div>
+                        
+                        
+                    </div>                
+                </div>
+            </div>
+   
+
+    
+
+
+
+
+    <!-- Start sollution Table Section -->
+    <div id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-12">
+                        <div class="section-title text-center">
+                            <h3>Our Sollution</h3>
+                            <p class="white-text"><strong>FFFP</strong> Forest and Farm Fire Protection</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <iframe width="270" height="134" src="https://www.youtube.com/embed/mqX0VtU11FQ" title="Forest Fire Protection by Smart For Green" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    
+         
+        </div>
+    </div>
+    <!-- End Pricing Table Section -->
+
+        <!-- Start Testimonial Section -->
+        <div id="testimonial" class="testimonial-section">
+            <div class="container">
+                <!-- Start Testimonials Carousel -->
+                <div id="testimonial-carousel" class="testimonials-carousel">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonials item">
+                        <div class="testimonial-content">
+                            <!-- <img src="images/testimonial/face_1.png" alt="" > -->
+                            <img src="{%static 'images\sol.jpg'%}"  alt="...">
+    
+                            <div class="testimonial-author">
+                                <div class="author">FFFP</div>
+                                <div class="designation"><strong>F</strong>orest and <strong>F</strong>arm <strong>F</strong> ire <strong>P</strong>rotection</div>
+                            </div>
+                            <p>The placement of the sensors in the target areas allows <br>the collection of precise and instantaneous data on the state of the forest, <br>measuring soil moisture and temperature.</p>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="testimonials item">
+                        <div class="testimonial-content">
+                            <!-- <img src="images/testimonial/face_2.png" alt="" > -->
+                            <img src="{%static 'images\sol.jpg'%}"  alt="...">
+                            <div class="testimonial-author">
+                                <div class="author">FFFP</div>
+                                <div class="designation"><strong>F</strong>orest and <strong>F</strong>arm <strong>F</strong> ire <strong>P</strong>rotection</div>
+                            </div>
+                            <p>Once these data are collected and with the analysis of meteorological data during a heat wave,<br> the system will be able to predict if there is a potential danger in specific areas, at this stage,<br> the system allows to have a dashboard for real-time supervision and to alert the responders.</p>
+                        
+                             </div>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="testimonials item">
+                        <div class="testimonial-content">
+                            <!-- <img src="images/testimonial/face_3.png" alt="" > -->
+                            <img src="{%static 'images\sol.jpg'%}"  alt="...">
+                            <div class="testimonial-author">
+                                <div class="author">FFFP</div>
+                                <div class="designation"><strong>F</strong>orest and <strong>F</strong>arm <strong>F</strong>ire <strong>P</strong>rotection</div>
+                            </div>
+                            <p>In case of fire outbreak, <br>the FFFP solution also allows detection with thermal cameras and notifies the forest rangers <br>and firefighters of the region (Civil Protection)<br> with a provisioning of information on the state of the fire with measurements of <br>the temperature in the center of the fire, <br>the rate of CO2 (carbon dioxide) which allows safe interventions of firefighters knowing the direction of <br>the wind and the speed of propagation.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Testimonials Carousel -->
+            </div>
+        </div>
+        <!-- End Testimonial Section -->
+
+            
+    
+    
+
+    <section id="contact" class="contact">
+        <footer class="style-1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-xs-12">
+                        <span class="copyright">Copyright &copy; <a href="http://127.0.0.1:8000/">SmartForGreen</a> 2022</span>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div class="footer-social text-center">
+                            <ul>
+                                <li><a href="https://github.com/Yasmine-BA1"><i class="fa fa-github"></i></a></li>
+                                <li><a href="https://www.facebook.com/yasmine.benahmed.902"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/yasmine-ben-ahmed/"><i class="fa fa-linkedin"></i></a></li>
+                              
+                                <li><a href="https://www.instagram.com/yasmin.benahmed/?hl=fr"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+    </section>
+
+
+    <div id="loader">
+        <div class="spinner">
+            <div class="dot1"></div>
+            <div class="dot2"></div>
+        </div>
+    </div>
+
+    
+
+    <!-- jQuery Version 2.1.1 -->
+    <!-- <script src="js/jquery-2.1.1.min.js"></script> -->
+    <script src="{% static 'index/js/jquery-2.1.1.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <!-- <script src="asset/js/bootstrap.min.js"></script> -->
+    <script src="{% static 'index/asset/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <!-- <script src="js/jquery.easing.1.3.js"></script> -->
+    <script src="{% static 'index/js/jquery.easing.1.3.js' %}"></script>
+
+    <!-- <script src="js/classie.js"></script> -->
+    <script src="{% static 'index/js/classie.js' %}"></script>
+
+    <!-- <script src="js/count-to.js"></script> -->
+    <script src="{% static 'index/js/count-to.js' %}"></script>
+
+    <!-- <script src="js/jquery.appear.js"></script> -->
+    <script src="{% static 'index/js/jquery.appear.js' %}"></script>
+
+    <!-- <script src="js/cbpAnimatedHeader.js"></script> -->
+    <script src="{% static 'index/js/cbpAnimatedHeader.js' %}"></script>
+
+    <!-- <script src="js/owl.carousel.min.js"></script> -->
+    <script src="{% static 'index/js/owl.carousel.min.js' %}"></script>
+
+	<!-- <script src="js/jquery.fitvids.js"></script> -->
+    <script src="{% static 'index/js/jquery.fitvids.js' %}"></script>
+
+	<!-- <script src="js/styleswitcher.js"></script> -->
+    <script src="{% static 'index/js/styleswitcher.js' %}"></script>
+
+    <!-- Contact Form JavaScript -->
+    <!-- <script src="js/jqBootstrapValidation.js"></script> -->
+    <script src="{% static 'index/js/jqBootstrapValidation.js' %}"></script>
+
+    <!-- <script src="js/contact_me.js"></script> -->
+    <script src="{% static 'index/js/contact_me.js' %}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <!-- <script src="js/script.js"></script> -->
+    <script src="{% static 'index/js/script.js' %}"></script>
+
+</body>
+
+</html>

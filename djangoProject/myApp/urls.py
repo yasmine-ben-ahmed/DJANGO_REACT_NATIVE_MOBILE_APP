@@ -1,13 +1,18 @@
 from django.urls import path
-
-from .views import TestView
-
-# localhost:8000/api/v1.0/user/test
+from . import views
+from django.contrib.auth import views as mdp
 
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('test2', TestView.as_view()),
+    path('home', views.home,name='home' ),
+    path('connectas',views.connectas,name='connectas'),
+    path('client/',views.connectasclient,name='connectasclient'),
+    path('supervisor/',views.connectassupervisor,name='connectassupervisor'),
+
+    path('reset_password/', mdp.PasswordResetView.as_view(template_name='password_reset.html'), name="password_reset"),
+    path('reset_password_done/', mdp.PasswordResetDoneView.as_view(template_name='password_reset_done.html'), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', mdp.PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html'), name='password_reset_confirm'),
+    path('reset_password_complete/', mdp.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'), name='password_reset_complete'),
+
 ]

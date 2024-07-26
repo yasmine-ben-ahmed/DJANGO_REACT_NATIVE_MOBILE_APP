@@ -1,0 +1,117 @@
+body.bg-img {
+    background-image: url("../index/images/1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body.bg-img2 {
+   
+    background-image: url("../index/images/3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+.sidebar-wrapper::-webkit-scrollbar {
+    width: 6px;
+    background-color: #131407;
+}
+
+.sidebar-wrapper::-webkit-scrollbar-thumb {
+    background-color: #5ab02e;
+    border-radius: 5px;
+}
+
+
+
+.project-card {
+    background-color: #E6E5E5;
+    border-radius: 12px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16);
+    padding: 15px;
+    width: 290px;
+    height: 100px;
+    margin: 10px 5px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.sidebar {
+    background-color: #e6e5e5;
+    width: 320px;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    height: 660px;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 30px;
+}
+
+.sidebar-header i {
+    font-size: 24px;
+    color: #5b3f43;
+    margin-right: 10px;
+}
+
+.sidebar-heading {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 10px;
+    margin-top: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.add-project-btn {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    background-color: #5ab02e;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.form-container {
+    background-color: #e6e5e5;
+    width: 600px;
+    height: 660px;
+    border-radius: 5px;
+    margin-left: 40px;
+}
+
+.form-container h4 {
+    margin-bottom: 20px;
+    margin-top: 10px;
+    color: #5ab02e;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.form-container h5 {
+    color: #5b3f43;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.form-container .panel-footer {
+    margin-top: -20px;
+    margin-bottom: 10px;
+    font-size: 10px;
+}
+
+.form-container .panel-footer i {
+    color: red;
+}
+
+

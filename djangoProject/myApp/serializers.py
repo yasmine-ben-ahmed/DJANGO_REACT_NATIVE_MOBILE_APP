@@ -1,8 +1,8 @@
 # Import the Group and User models from Django's built-in authentication system
 from django.contrib.auth.models import Group, User
-from .models import Supervisor, Client
 # Import the serializers module from Django REST framework
 from rest_framework import serializers
+from .models import supervisor, client
 
 # Define a serializer for the User model
 class UserSerializerapp(serializers.HyperlinkedModelSerializer):
@@ -24,10 +24,10 @@ class GroupSerializerapp(serializers.HyperlinkedModelSerializer):
 
 class SupervisorSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Supervisor
+        model = supervisor
         fields = ['id', 'nom', 'prenom', 'NB_GSM', 'pseudo', 'e_mail', 'password', 'image', 'user']
 
 class ClientSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Client
+        model = client
         fields = ['id', 'nom', 'prenom', 'NB_GSM', 'pseudo', 'e_mail', 'image', 'supervisor']

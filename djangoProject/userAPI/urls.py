@@ -1,7 +1,8 @@
 from django.urls import path
 
-from .views import TestView, UserView, UserLoginView
+from .views import TestView, UserLoginView
 from rest_framework_jwt.views import refresh_jwt_token, verify_jwt_token
+from userAPI.views import UserView
 
 
 urlpatterns = [
@@ -11,4 +12,3 @@ urlpatterns = [
     path('login-user/', UserLoginView.as_view()),
 ]
 
-# localhost:8000/api/v1.0/user/login-user/
