@@ -9,36 +9,16 @@ const Provider = ( { children } ) => {
   const [ domain, setDomain ] = useState("http://192.168.0.120:8000")
   const [ isLoggedIn, setIsLoggedIn ] = useState(false)
   const [ userObj, setUserObj ] = useState()
+  const [ projObj, setProjObj ] = useState()
+  const [ supObj, setSupObj ] = useState()
+  const [ nodeObj, setNodeObj ] = useState()
+  const [ nodeDataObj, setNodeDataObj ] = useState()
   const [ appSettings, setAppSettings ] = useState({})
 
   const setToken = async (token) => {
     await SecureStore.setItemAsync('token', token);
   }
 
-  function initAppSettings() {
-    fetch(`${domain}/api/v1.0/app/settings`, {
-      method: 'GET'
-      })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        } else {
-          throw res.json()
-        }
-      })
-      .then(json => {
-       // console.log(json)
-        setAppSettings(json)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-
-  }
-
-  useEffect(() => {
-    initAppSettings()
-  }, [])
 
   const globalContext = {
     domain,
@@ -48,6 +28,14 @@ const Provider = ( { children } ) => {
     setAppSettings,
     userObj,
     setUserObj,
+    projObj, 
+    setProjObj,
+    supObj, 
+    setSupObj,
+    nodeDataObj, 
+    setNodeDataObj,
+    nodeObj, 
+    setNodeObj,
     setToken,
   }
 

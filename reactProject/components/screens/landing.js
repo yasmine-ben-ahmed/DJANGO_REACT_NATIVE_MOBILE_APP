@@ -1,31 +1,34 @@
 import React, { useContext } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { Context } from "../globalContext/globalContext.js";
 import containers from "../styles/containers.js";
 import fonts from "../styles/fonts.js";
 import buttons from "../styles/buttons.js";
-import margins from "../styles/margins.js";
+import LoginIcon from '../../assets/images/misc/login.png';
 
 function Landing({ navigation }) {
   const globalContext = useContext(Context);
-  const { isLoggedIn, appSettings } = globalContext;
+  const {  appSettings } = globalContext;
 
   return (
     <View style={containers(appSettings).outerPage}>
-      <Text style={fonts(appSettings).h1}>Hello User !</Text>
-      <Text style={fonts(appSettings).p}>You are {isLoggedIn ? '' : 'Not '}logged in</Text>
+      <Image source={LoginIcon} style={{ width: 300, height: 300 }} />
+      <Text style={[fonts(appSettings).h1,{ marginTop: -20 }]}>Welcome, Client !</Text>
+
       <TouchableOpacity
-        style={buttons(appSettings).landingpage}
+        style={[buttons(appSettings).landingpage, { marginTop: 80 }]}
         onPress={() => navigation.navigate("Login")}
       >
-        <Text>Sign In</Text>
+        <Text style={{ fontWeight: 'bold', color:"#666"}}>Sign In</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={[buttons(appSettings).landingpage, margins.topTenPercent]}
+        style={[buttons(appSettings).landingpage, { marginTop: 25 }]}
         onPress={() => navigation.navigate('Register')}
       >
-        <Text>Sign Up</Text>
+        <Text style={{ fontWeight: 'bold', color:"#666"}}>Sign Up</Text>
       </TouchableOpacity>
+
+
     </View>
   );
 }

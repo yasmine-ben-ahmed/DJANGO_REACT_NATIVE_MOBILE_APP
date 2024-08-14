@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-)f4$xnn1#l9-*f2el51+$trewa5ny6fq-ua0g3le3z@_l^t%*y
 DEBUG = True
 
 #ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-ALLOWED_HOSTS = ['localhost','192.168.0.120', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost','192.168.0.120', '192.168.84.243']
 
 
 INSTALLED_APPS = [
@@ -27,7 +27,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'userAPI',
     'myApp',
-    'appSettings',
     'managePJ',
     'rest_framework',
     'corsheaders',
@@ -40,6 +39,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
+        #'rest_framework.authentication.TokenAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
@@ -66,6 +66,7 @@ MIDDLEWARE = [
 
 CORS_ALLOW_ALL_ORIGINS = True 
 
+
 ROOT_URLCONF = 'djangoProject.urls'
 
 TEMPLATES = [
@@ -83,6 +84,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'djangoProject.wsgi.application'
 

@@ -18,11 +18,12 @@ import pyowm
 from .status import result
 import csv 
 from .FWI import *
-from datetime import datetime
 
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+
+
 
 
 def add_project(request,pseudo):
@@ -404,13 +405,13 @@ def final(request,id,pseudo):
                 'node_name' : n.nom,
                 'project_name' : project,
                 'supervisor' : supervisor_obj,
-                'sup_phone' : supervisor_obj.NB_GSM, 
+                'sup_phone' : supervisor_obj.phone, 
             }
             html_message = render_to_string('alert_email_template.html', context)
             plain_message = strip_tags(html_message)
 
             # Send the email
-            send_mail(subject, plain_message, 'benahmedyasmin@gmail.com', [project.clientp.e_mail], html_message=html_message)
+            send_mail(subject, plain_message, 'benahmedyasmin@gmail.com', [project.clientp.email], html_message=html_message)
 
 
     
@@ -579,5 +580,8 @@ def modify_3(request, pseudo, id):
         node_to_delete = node.objects.get(nom=node_to_delete_name)
         node_to_delete.delete()
         return redirect('addnode', pseudo=supervisor_obj.pseudo, id=project.polygon_id)
+    
+
+
         
   

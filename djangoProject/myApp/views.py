@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
-from .serializers import UserSerializerapp, GroupSerializerapp ,ClientSerializer, SupervisorSerializer
+from .serializers import  ClientSerializer, SupervisorSerializer
+from userAPI.serializers import UserSerializer, GroupSerializer
 from .models import supervisor, client
 from django.contrib.auth import authenticate, login
 
@@ -17,12 +18,12 @@ def home(request):
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
-    serializer_class = UserSerializerapp
+    serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
-    serializer_class = GroupSerializerapp
+    serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 class SupervisorViewSet(viewsets.ModelViewSet):
@@ -64,7 +65,7 @@ def connectasclient(request):
                     clientp = client.objects.get(pseudo=pseudo)
                     # project = myProject.objects.get(clientp=clientp)
                     
-                return redirect('client_project',pseudo)
+                return redirect('home')
             # We pass the form to the template even if it is not valid
             return render(request, 'login_client.html', {'form': formulaire})
 

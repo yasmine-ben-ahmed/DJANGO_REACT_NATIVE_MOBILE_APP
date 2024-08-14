@@ -1,38 +1,42 @@
 import React, { useContext, useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
-import { Context } from "../globalContext/globalContext.js"
-import containers from "../styles/containers.js"
-import fonts from "../styles/fonts.js"
-import inputs from "../styles/inputs.js"
-import margins from "../styles/margins.js"
-import buttons from "../styles/buttons.js"
+import { View, Text, TouchableOpacity, Image } from 'react-native';
+import InputField from '../styles/inputField';
+import { Context } from "../globalContext/globalContext.js";
+import containers from "../styles/containers.js";
+import fonts from "../styles/fonts.js";
+import buttons from "../styles/buttons.js";
+import GoogleIcon from '../../assets/images/misc/google.png';
+import FacebookIcon from '../../assets/images/misc/facebook.png';
+import TwitterIcon from '../../assets/images/misc/twitter.png';
 
+function Register({ }) {
+  const globalContext = useContext(Context);
+  const { setIsLoggedIn, appSettings, domain, setUserObj, setToken } = globalContext;
 
-function Register({ navigation, route, props }){
-
-  const globalContext = useContext(Context)
-  const { setIsLoggedIn, appSettings, domain, userObj, setUserObj, setToken } = globalContext;
-
-  const [securePassword, setSecurePassword] = useState(true)
-  const [email, setEmail] = useState("")
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
+  const [securePassword, setSecurePassword] = useState(true);
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [password, setPassword] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState(""); 
+  const [pseudo, setPseudo] = useState(""); 
+  const [error, setError] = useState("");
 
   function handleLogin() {
 
     setError("")
 
     let body = JSON.stringify({
-      'username': email.toLowerCase(),
+
       'email': email.toLowerCase(),
-      'first_name': firstName,
-      'last_name': lastName,
-      'password': password
+      'firstName': firstName,
+      'lastName': lastName,
+      'password': password,
+      'phone': phoneNumber,
+      'pseudo': pseudo,
     })
 
-    fetch(`${domain}/api/v1.0/user/create-user/`, {
+    fetch(`${domain}/api/users/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -49,7 +53,7 @@ function Register({ navigation, route, props }){
       })
       .then(json => {
         setUserObj(json)
-        setToken(json.token)
+        //setToken(json.token)
         setIsLoggedIn(true)
       })
       .catch(error => {
@@ -58,40 +62,85 @@ function Register({ navigation, route, props }){
 
   }
 
+  const togglePasswordVisibility = () => {
+    setSecurePassword(prevState => !prevState);
+  };
 
-
-  return(
-    <View style={containers(appSettings).outerPage}>
+  return (
+    <View style={containers(appSettings).outerPage }>
       <View style={containers(appSettings).formBox}>
-        <Text style={[fonts(appSettings).h1, margins.top30Percent]}>Sign Up</Text>
+        <Text style={[fonts(appSettings).h1]}>Sign Up</Text>
+
+        <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 25 }}>
+          <TouchableOpacity onPress={() => console.log('Google Login')}>
+            <Image source={GoogleIcon} style={{ width: 30, height: 30 }} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => console.log('Facebook Login')}>
+            <Image source={FacebookIcon} style={{ width: 30, height: 30 }} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => console.log('Twitter Login')}>
+            <Image source={TwitterIcon} style={{ width: 30, height: 30 }} />
+          </TouchableOpacity>
+        </View>
+
+        <Text style={{ textAlign: 'center', color: '#fff', marginTop: 50 }}>
+          Or, register with email ...
+        </Text>
 
         <Text style={fonts(appSettings).errorLabel}>{error}</Text>
 
-        <Text style={[fonts(appSettings).inputLabel]}>First Name</Text>
-        <TextInput value={firstName} onChangeText={text => setFirstName(text)} textContentType="name" autoCompleteType="email" style={inputs(appSettings).textInput} placeholder='First Name'/>
+        <InputField
+          label="First Name"
+          icon="man"
+          onChangeText={text => setFirstName(text)}
+          value={firstName}
+        />
 
+        <InputField
+          label="Last Name"
+          icon="man"
+          onChangeText={text => setLastName(text)}
+          value={lastName}
+        />
 
-        <Text style={[fonts(appSettings).inputLabel]}>Last Name</Text>
-        <TextInput value={lastName} onChangeText={text => setLastName(text)} textContentType="name" autoCompleteType="email" style={inputs(appSettings).textInput} placeholder='Last Name'/>
+        <InputField
+          label="Email Address"
+          icon="email"
+          keyboardType="email-address"
+          onChangeText={text => setEmail(text)}
+          value={email}
+        />
 
+      <InputField
+          label="Phone Number" 
+          icon="phone"
+          keyboardType="phone-pad"
+          onChangeText={text => setPhoneNumber(text)}
+          value={phoneNumber}
+        />
 
-        <Text style={[fonts(appSettings).inputLabel]}>Email Address</Text>
-        <TextInput value={email} onChangeText={text => setEmail(text)} textContentType="username" autoCompleteType="email" style={inputs(appSettings).textInput} placeholder='Email'/>
+        <InputField
+          label="Pseudo" 
+          icon="man"
+          onChangeText={text => setPseudo(text)}
+          value={pseudo}
+        /> 
 
-        <Text style={[fonts(appSettings).inputLabel]}>Password</Text>
-        <TextInput value={password} onChangeText={text => setPassword(text)} secureTextEntry={securePassword} textContentType="password" autoCompleteType="password" style={inputs(appSettings).textInput} placeholder='Password'/>
-
-        <TouchableOpacity style={[buttons(appSettings).login, margins.topTenPercent]} onPress={() => handleLogin()}>
-          <Text>Sign Up</Text>
+      <InputField
+          label="Password"
+          icon="lock"
+          secureTextEntry={securePassword}
+          onChangeText={text => setPassword(text)}
+          value={password}
+          onEyePress={togglePasswordVisibility}
+        />
+        
+        <TouchableOpacity style={[buttons(appSettings).login]} onPress={() => handleLogin()}>
+          <Text style={{ fontWeight: 'bold', color:"#666"}}>Sign Up</Text>
         </TouchableOpacity>
-
-
       </View>
     </View>
-  )
-
-
-
+  );
 }
 
 export default Register;

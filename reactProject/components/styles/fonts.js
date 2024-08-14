@@ -12,12 +12,15 @@ const fonts = (appSettings) => StyleSheet.create({
     margin: 0
   },
 
+
+  
+
   p: {
     color: ("foregroundColor" in appSettings)? appSettings['foregroundColor'] : "#ffffff",
     fontSize: 12,
     width: "100%",
     textAlign: "center",
-    margin: 0
+    margin: 10
   },
 
   inputLabel: {

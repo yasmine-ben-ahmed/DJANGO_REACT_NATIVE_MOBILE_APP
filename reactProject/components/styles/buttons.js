@@ -19,6 +19,15 @@ const buttons = (appSettings) => StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 15,
+  },
+  skape: {
+    width: "20%",
+    height: 20,
+    backgroundColor: "white",
+    textAlign: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 10,
   }
 });
 

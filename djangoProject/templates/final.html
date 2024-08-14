@@ -1,9 +1,80 @@
-{% extends 'commun.html' %}
-{% block content %}
-{% load static %}
+{% extends 'base.html' %} 
+{% block content %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <title>SFG - Together We Protect Our Forests!</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/png" href="{% static 'images/logo4.png' %}">
+    
+        <!-- Leaflet CSS and JS -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" 
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+        <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" 
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+      
+        <!-- Leaflet Draw CSS and JS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+    
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+        <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha384-6DBIkDzKj1PHw3gW8skvQoAQ5KoG5ru5Ot1WmYvFxBn96yO9SB+4+W4A7WuL4izU"
+        crossorigin=""/>
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" integrity="sha512-1xhdQwMzS8Ly+5ZCvSk/Z9oGt92uI1FUpy2+vcD7zTkXXw06ivV8WgZ+flv7dX9tMJPCT8YENWQOv+7OxNwHvw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js" integrity="sha512-PnX6fRPjq/LiYD6rsRv6LZx6PZyoLCejr3q1ZDDtzAVT9T1TzT8OGpVEyTjjntPtd+bGwIzgm1orDjZi2QX6UQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.marker.bouncing/dist/leaflet.marker.bouncing.min.js"></script>
+    
+    
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/gh/hosuaby/Leaflet.SmoothMarkerBouncing@v3.0.2/dist/bundle.js"
+            crossorigin="anonymous"></script>
+
+    </head>
 
     <style>
-      
+      body.bg-img {
+        background-image: url("{%static 'index\images\3.jpg'%}");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .sidebar-wrapper::-webkit-scrollbar {
+                          width: 6px;
+                          background-color: #D4D7DC;
+                        }
+                        
+                        .sidebar-wrapper::-webkit-scrollbar-thumb {
+                          background-color: darkgreen;
+                          border-radius: 5px;
+                        }
+
+                        .project-card {
+                                background-color: #F2F2F2;
+                                border-radius: 12px;
+                                box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16);
+                                padding: 15px ;
+                                width: 250px;
+                                height:100px;
+                                {% comment %} max-width: 450px; {% endcomment %}
+                                margin: 10px 0;
+                                margin-left:-10px;
+                                text-align: center;
+                                transition: all 0.3s ease-in-out;
+                              }
+                            
+                              {% comment %} .project-card:hover {
+                                transform: translateY(-5px);
+                              } {% endcomment %}
+
                               .visualize-btn {
                                 padding: 5px 5px;
                                 border: none;
@@ -110,7 +181,7 @@
                                 }
     </style>
 
-    <body   class="bg-img2">
+    <body   class="bg-img">
         <div class=" text-center" >
             <div class="row" style="width:1590px; margin:30px 10px;" >
                 <div class="col-3" >
@@ -133,108 +204,88 @@
                       <button class="btn btn-dark shadow-none add-project-btn" style="width: 100%; margin-bottom: 10px;   border-radius: 20px; background-color:darkgreen; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;" onclick="location.href='{% url 'add_project' supervisor.pseudo  %}'"><i class="fa-solid fa-plus"></i> Add Project</button>
                 
                       <ul class="list-unstyled mt-3">
-
-
                         {% for proj in projects %}
-                        <div class="project-card" style="width: 270px;">
-                        <li class="project-item" style="display: flex; align-items: left; justify-content: space-between; border-bottom: 0px solid #D1485F; padding: 10px 10px; margin:8px -22px; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;">
-                          <div class="project-info" style="display: flex; flex-direction: column;  height: 40px; /* set a fixed height */
-                          justify-content: space-between;">
-                          <h6 class="project-name" style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">Project Name: <span style="color: #6b2737">{{ proj.nomp }}</span></h6>
-        
-                            <p class="project-id" style="font-size: 14px; color: #8c8c8c; margin-left:0px;">Project ID: {{ proj.polygon_id }}</p>
-                           
-                          </div>
-                          <div class="project-actions">
-
-
-
-                            <button class="btn btn-outline-success visualize-btn"  onclick="location.href='{% url 'final' proj.supervisorp.pseudo proj.polygon_id %}'"><i class="fa-regular fa-eye"></i></button>
-                          
-                            {% if proj.polygon_id == project.polygon_id %}
-                            <button class="btn btn-outline-primary edit-btn"data-bs-toggle="modal" data-bs-target="#example"  ><i class="fa-solid fa-pencil"></i></button>
-                            <button class="btn btn-outline-danger delete-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash-alt"></i></button>
-                            {%endif%}   
-                            
-                            <!-- Modal -->
-<!-- Modal -->
-<div class="modal fade" id="example" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header" style="background-color: #6B2737;">
-          <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">What do you want to modify?</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <strong>Choose an option:</strong>
-          <ul>
-            <li style="margin:15px 5px;">
-              <p style="display: inline-block; margin-right: 10px;">Modify project information</p>
-              <a type="button" name="but_1" href="{% url 'modify_1' supervisor.pseudo project.polygon_id %}" class="btn btn-danger btn-sm shadow-none" style="border-radius: 20px; background-color: #6B2737; margin:10px 5px;">click here</a>
-            </li>
-            <li  style="margin:15px 5px;">
-              <p style="display: inline-block; margin-right: 10px;">Modify project's plots</p>
-              <a type="button" name="but_2" href="{% url 'modify_2' supervisor.pseudo project.polygon_id %}" class="btn btn-danger btn-sm shadow-none" style="border-radius: 20px; background-color: #6B2737;  margin:10px 5px;">click here</a>
-            </li>
-            <li style="margin:15px 5px;">
-                <form method="POST" action="{% url 'modify_3' supervisor.pseudo project.polygon_id %}">
-                  {% csrf_token %}
-                  <label for="node_to_delete" style="display: inline-block; margin-right: 10px;">Delete a project's node:</label>
-                  <select name="node_to_delete" style="display: inline-block; margin-right: 10px; color:black;background-color: white;">
-                    {% for n in nodee %}
-                      <option value="{{ n.nom }}">{{ n.nom }}</option>
-                    {% endfor %}
-                  </select>
-                  <button type="submit" name="but_3" class="btn btn-danger btn-sm shadow-none" style="border-radius: 20px; background-color: #6B2737; margin:10px 5px;">click here</button>
-                </form>
-              </li>
-              
-          </ul>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" style="border-radius:20px;" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  
-                                                    
-        
-        
-                           
-                            
-                             <!-- Modal --> 
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog ">
-                                  <div class="modal-content">
-                                    <div class="modal-header " style="background-color:#6B2737;">
-                                      <h5 class="modal-title" id="exampleModalLabel"  style="color:white;">Delete Project</h5>
-                                      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                          <div class="project-card" style="width: 270px;">
+                            <li class="project-item" style="display: flex; align-items: left; justify-content: space-between; border-bottom: 0px solid #D1485F; padding: 10px 10px; margin: 8px -22px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+                              <div class="project-info" style="display: flex; flex-direction: column; height: 40px; justify-content: space-between;">
+                                <h6 class="project-name" style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">Project Name: <span style="color: #6b2737">{{ proj.nomp }}</span></h6>
+                                <p class="project-id" style="font-size: 14px; color: #8c8c8c; margin-left: 0px;">Project ID: {{ proj.polygon_id }}</p>
+                              </div>
+                              <div class="project-actions">
+                                <button class="btn btn-outline-success visualize-btn" onclick="location.href='{% url 'final' proj.supervisorp.pseudo proj.polygon_id %}'"><i class="fa-regular fa-eye"></i></button>
+                                
+                                {% if proj.polygon_id == project.polygon_id %}
+                                  <button class="btn btn-outline-primary edit-btn" data-bs-toggle="modal" data-bs-target="#editModal{{ proj.polygon_id }}"><i class="fa-solid fa-pencil"></i></button>
+                                  <button class="btn btn-outline-danger delete-btn" data-bs-toggle="modal" data-bs-target="#deleteModal{{ proj.polygon_id }}"><i class="fa-solid fa-trash-alt"></i></button>
+                                {% endif %}
+                                
+                                <!-- Edit Modal -->
+                                <div class="modal fade" id="editModal{{ proj.polygon_id }}" tabindex="-1" aria-labelledby="editModalLabel{{ proj.polygon_id }}" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header" style="background-color: #6B2737;">
+                                        <h1 class="modal-title fs-5 text-light" id="editModalLabel{{ proj.polygon_id }}">What do you want to modify?</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <strong>Choose an option:</strong>
+                                        <ul>
+                                          <li style="margin: 15px 5px;">
+                                            <p style="display: inline-block; margin-right: 10px;">Modify project information</p>
+                                            <a type="button" name="but_1" href="{% url 'modify_1' supervisor.pseudo project.polygon_id %}" class="btn btn-danger btn-sm shadow-none" style="border-radius: 20px; background-color: #6B2737; margin: 10px 5px;">click here</a>
+                                          </li>
+                                          <li style="margin: 15px 5px;">
+                                            <p style="display: inline-block; margin-right: 10px;">Modify project's plots</p>
+                                            <a type="button" name="but_2" href="{% url 'modify_2' supervisor.pseudo project.polygon_id %}" class="btn btn-danger btn-sm shadow-none" style="border-radius: 20px; background-color: #6B2737; margin: 10px 5px;">click here</a>
+                                          </li>
+                                          <li style="margin: 15px 5px;">
+                                            <form method="POST" action="{% url 'modify_3' supervisor.pseudo project.polygon_id %}">
+                                              {% csrf_token %}
+                                              <label for="node_to_delete" style="display: inline-block; margin-right: 10px;">Delete a project's node:</label>
+                                              <select name="node_to_delete" style="display: inline-block; margin-right: 10px; color: black; background-color: white;">
+                                                {% for n in nodee %}
+                                                  <option value="{{ n.nom }}">{{ n.nom }}</option>
+                                                {% endfor %}
+                                              </select>
+                                              <button type="submit" name="but_3" class="btn btn-danger btn-sm shadow-none" style="border-radius: 20px; background-color: #6B2737; margin: 10px 5px;">click here</button>
+                                            </form>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" style="border-radius: 20px;" data-bs-dismiss="modal">Close</button>
+                                      </div>
                                     </div>
-                                    <div class="modal-body">
-                                      <p>Are you sure you want to delete project "{{ project.nomp }}"?</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal" style="border-radius: 20px;">Cancel</button>
-                                      
-                                      <a type="button"  href="{% url 'delete_project' supervisor.pseudo project.polygon_id %}" class="btn btn-danger shadow-none" style="border-radius: 20px; background-color:#6B2737;">Delete</a>
+                                  </div>
+                                </div>
+                                
+                                <!-- Delete Modal -->
+                                <div class="modal fade" id="deleteModal{{ proj.polygon_id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ proj.polygon_id }}" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header" style="background-color: #6B2737;">
+                                        <h5 class="modal-title" id="deleteModalLabel{{ proj.polygon_id }}" style="color: white;">Delete Project</h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <p>Are you sure you want to delete project "{{ project.nomp }}"?</p>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal" style="border-radius: 20px;">Cancel</button>
+                                        <a type="button" href="{% url 'delete_project' supervisor.pseudo project.polygon_id %}" class="btn btn-danger shadow-none" style="border-radius: 20px; background-color: #6B2737;">Delete</a>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                              
-
-                            
-                    
-                         
+                            </li>
                           </div>
-                        </li>
-                    </div>
-                        {% comment %} <hr style='border-color: #6B2737;'> {% endcomment %}
                         {% endfor %}
-
                       </ul>
+                      
+
+
+
                     </div>
                   </div>
                 </div>
@@ -245,11 +296,9 @@
                         
                       <h6 style="margin-bottom:5px;margin-top:20px;text-align:left;font-weight:bold;margin-bottom:20px;color:rgb(102, 101, 101);font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;font-size:22px;text-transform:uppercase;letter-spacing:2px;">
 
-                        <strong style="color: #3F6D22;">Welcome </strong> {{supervisor.nom}} {{supervisor.prenom}}, <strong style="color: #3F6D22;">To Project: </strong>{{ project.nomp }}
+                        <strong style="color: #3F6D22;">Welcome </strong> {{supervisor.firstName}} {{supervisor.lastName}}, <strong style="color: #3F6D22;">To Project: </strong>{{ project.nomp }}
                       
-                        <a class="btn btn-outline-primary edit-b d-inline" style="border:none; margin-left: -20px;" onclick="location.href='{% url 'modif' supervisor.pseudo project.polygon_id %}'">
-                          <i class="fa-solid fa-pen-to-square" style="color: darkgreen; border-color: white;"></i>
-                        </a>
+
                       
 
                       </h6>
@@ -490,5 +539,5 @@
   
     </body>
 
-
+</html>
 {% endblock %}

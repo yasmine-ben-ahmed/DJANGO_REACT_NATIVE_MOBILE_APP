@@ -23,6 +23,8 @@ urlpatterns = [
     path('sup_<str:pseudo>/modify_1/<int:id>/', views.modify_1, name='modify_1'),
     path('sup_<str:pseudo>/modify_2/<int:id>/', views.modify_2, name='modify_2'),
     path('sup_<str:pseudo>/modify_3/<int:id>/', views.modify_3, name='modify_3'),
+
+    
 ]
 
 

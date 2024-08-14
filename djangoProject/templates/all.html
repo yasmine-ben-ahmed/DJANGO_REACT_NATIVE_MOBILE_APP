@@ -1,9 +1,69 @@
+{% extends 'base.html' %} 
+{% block content %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <title>SFG - Together We Protect Our Forests!</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/png" href="{% static 'images/logo4.png' %}">
+    
+        <!-- Leaflet CSS and JS -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" 
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+        <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" 
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+      
+        <!-- Leaflet Draw CSS and JS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+    
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 
-{% extends 'commun.html' %}
-{% block content %}
-{% load static %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+        <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha384-6DBIkDzKj1PHw3gW8skvQoAQ5KoG5ru5Ot1WmYvFxBn96yO9SB+4+W4A7WuL4izU"
+        crossorigin=""/>
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" integrity="sha512-1xhdQwMzS8Ly+5ZCvSk/Z9oGt92uI1FUpy2+vcD7zTkXXw06ivV8WgZ+flv7dX9tMJPCT8YENWQOv+7OxNwHvw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js" integrity="sha512-PnX6fRPjq/LiYD6rsRv6LZx6PZyoLCejr3q1ZDDtzAVT9T1TzT8OGpVEyTjjntPtd+bGwIzgm1orDjZi2QX6UQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.marker.bouncing/dist/leaflet.marker.bouncing.min.js"></script>
+    
+    
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/gh/hosuaby/Leaflet.SmoothMarkerBouncing@v3.0.2/dist/bundle.js"
+            crossorigin="anonymous"></script>
+
+ <!-- Popper.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <!-- Bootstrap JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+
+</head>
 <style>
- 
+  body.bg-img {
+    background-image: url("{%static 'index\images\3.jpg'%}");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .sidebar-wrapper::-webkit-scrollbar {
+              width: 6px;
+              background-color: #131407;
+            }
+            
+            .sidebar-wrapper::-webkit-scrollbar-thumb {
+              background-color: darkgreen;
+              border-radius: 5px;
+            }
             .visualize-btn {
                     padding: 5px 5px;
                     border: none;
@@ -102,10 +162,26 @@
       .page-link i {
         font-size: 16px;
       }
-     
+      .project-card {
+                            background-color: #E6E5E5;
+                            border-radius: 12px;
+                            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16);
+                            padding: 15px ;
+                            width: 290px;
+                            height:100px;
+                            
+                            margin: 10px 5px;
+                            
+                            text-align: center;
+                            transition: all 0.3s ease-in-out;
+                          }
+                        
+                          .project-card:hover {
+                            transform: translateY(-5px);
+                          } 
 </style>
 
-<body   class="bg-img2">
+<body   class="bg-img">
 
 
     <div style="margin: 40px 100px;">
@@ -164,7 +240,10 @@
                         <h4 style="  margin-bottom:20px; margin-top: 10px;"> 
                           <strong style=" font-size: 20px;  margin-bottom: 20px; color:darkgreen; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ; font-size: 22px;   text-transform: uppercase; letter-spacing: 2px;">Last Node Added Of Project: </strong>{{ project.nomp }} {{ lastd.node }}
                         
-                         
+                          <a class="btn btn-outline-primary edit-b d-inline" style="border:none; margin-left: -20px;" onclick="location.href='{% url 'display_polygone' supervisor.pseudo project.polygon_id %}'">
+                            <i class="fa-sharp fa-solid fa-square" style="color: darkgreen; border-color: white;"></i>
+                          </a>
+                        
                         </h4>
             
                         
@@ -187,13 +266,13 @@
                          
                           </div>  
                           {% comment %} <p><strong style='color:#A26A25;'>related node:</strong> {{ lastd.node }} </p> {% endcomment %}
-                          <button style="margin-top: -60px; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;font-weight:bold; background-color:#9fb4bb; color: #131407; border-radius: 20px; margin-left: 30px;" type="button" class="btn btn-dark shadow-none" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                          <button style="margin-top: -60px; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;font-weight:bold; background-color:#082631; border-radius: 20px; margin-left: 30px;" type="button" class="btn btn-dark shadow-none" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             Node Information
                           </button>
                           
                         </div>
 
-                        <div class="col-3" style=" border: 1px solid #d5d4dd ; background-color:#bbcad0;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ; width: 235px; height: 150px; margin-left: 33px; border-radius: 10px; margin-top: 8px; margin-right: 60px;" >
+                        <div class="col-3" style=" border: 1px solid #d5d4dd ; background-color: #E9D8C7;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ; width: 235px; height: 150px; margin-left: 33px; border-radius: 10px; margin-top: 8px; margin-right: 60px;" >
                           <h5>Prediction result</h5> <hr>
                         
                           <div>
@@ -252,7 +331,7 @@
                 <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog ">
                       <div class="modal-content">
-                        <div class="modal-header " style="background-color:#aac2cb; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;">
+                        <div class="modal-header " style="background-color:#6B2737; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;">
                           <img src="{%static 'images\pos1.png'%}" alt="" width="40px" style="border-radius: 10px; " />
                           <h5 class="modal-title" id="exampleModalLabel"  style="color:white; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;">Node Information</h5>
                           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -564,5 +643,5 @@ t=0;
 
     </body>
 
-
-    {% endblock %}
+</html>
+{% endblock %}

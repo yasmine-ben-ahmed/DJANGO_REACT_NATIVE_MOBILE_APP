@@ -181,16 +181,16 @@
               <div class="row mb-3" >
                 <div class="col" >
                   <h5 style="color:#5b3f43; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;">Last Name</h5>
-                  {{ form.nom}}
-                  {% if form.nom.errors %}
-                  <strong class="text-danger" role="alert">{{ form.nom.errors }}</strong>
+                  {{ form.lastName}}
+                  {% if form.lastName.errors %}
+                  <strong class="text-danger" role="alert">{{ form.lastName.errors }}</strong>
                   {% endif %}
                 </div>
                 <div class="col">
                   <h5 style="color:#5b3f43;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ; ">Fist Name</h5>
-                  {{ form.prenom}}
-                  {% if form.prenom.errors %}
-                  <strong class="text-danger" role="alert">{{ form.prenom.errors }}</strong>
+                  {{ form.firstName}}
+                  {% if form.firstName.errors %}
+                  <strong class="text-danger" role="alert">{{ form.firstName.errors }}</strong>
                   {% endif %}
                 </div>
               </div>
@@ -205,9 +205,9 @@
 
                 <div class="col">
                   <h5 style="color:#5b3f43; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;">Phone</h5>
-                  {{ form.telephone }}
-                  {% if form.telephone.errors %}
-                  <strong class="text-danger" role="alert">{{ form.telephone.errors }}</strong>
+                  {{ form.phone }}
+                  {% if form.phone.errors %}
+                  <strong class="text-danger" role="alert">{{ form.phone.errors }}</strong>
                   {% endif %}
                 </div>
               </div>
@@ -229,18 +229,18 @@
               <div class="mb-3">
                 <div class="col">
                   <h5 style="color:#5b3f43; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;">Password</h5>
-                  {{ form.mot_de_passe}}
-                  {% if form.mot_de_passe.errors %}
-                  <strong class="text-danger" role="alert">{{ form.mot_de_passe.errors }}</strong>
+                  {{ form.password}}
+                  {% if form.password.errors %}
+                  <strong class="text-danger" role="alert">{{ form.password.errors }}</strong>
                   {% endif %}
                 </div>
               </div>
               <div class="mb-3">
                 <div class="col">
                   <h5 style="color:#5b3f43; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;">Password confirmation</h5>
-                  {{ form.confirmation_mot_de_passe}}
-                  {% if form.confirmation_mot_de_passe.errors %}
-                  <strong class="text-danger" role="alert">{{ form.confirmation_mot_de_passe.errors }}</strong>
+                  {{ form.confirm_password}}
+                  {% if form.confirm_password.errors %}
+                  <strong class="text-danger" role="alert">{{ form.confirm_password.errors }}</strong>
                   {% endif %}
                 </div>
               </div>
