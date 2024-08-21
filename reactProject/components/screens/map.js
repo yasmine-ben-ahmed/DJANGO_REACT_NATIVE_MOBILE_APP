@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, FlatList, Alert } from 'react
 import MapView, { Polygon, Marker, Callout, PROVIDER_GOOGLE } from 'react-native-maps';
 import { useFocusEffect } from '@react-navigation/native';
 import { Context } from "../globalContext/globalContext.js";
-import DetailsModal from '../screens/detailsModal.js';
+import DetailsModal from './DetailsModal.js';
 import containers from "../styles/containers.js";
 //import * as SMS from 'expo-sms';
 

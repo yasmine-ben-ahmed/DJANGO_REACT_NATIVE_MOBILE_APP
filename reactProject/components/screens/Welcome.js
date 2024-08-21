@@ -16,13 +16,14 @@ function Welcome({ navigation }) {
     <ImageBackground source={{ uri: `http://192.168.0.120:8000/static/index/images/5.jpg` }} style={containers(appSettings).background}> 
       <View style={containers(appSettings).overlay}>
         <View style={containers(appSettings).header}>
-          <Text style={[fonts(appSettings).h1, containers(appSettings).welcomeText]}>Welcome {userObj.firstName} {userObj.lastName} !</Text>
+          <Text style={[fonts(appSettings).h1, containers(appSettings).welcomeText]}>Welcome </Text>
+          <Text style={[fonts(appSettings).h1, containers(appSettings).welcomeText]}> {userObj.firstName} {userObj.lastName} !</Text>
         </View>
         <Text style={[fonts(appSettings).p, containers(appSettings).thankYouText]}>Thank you for using our app. We are thrilled to have you!</Text>
 
 
         <TouchableOpacity style={containers(appSettings).startButton} onPress={handleStart}>
-          <Text style={containers(appSettings).startButtonText}>Start Now!</Text>
+          <Text style={containers(appSettings).startButtonText}>Start Now</Text>
         </TouchableOpacity>
       </View>
     </ImageBackground>

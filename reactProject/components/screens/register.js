@@ -70,7 +70,7 @@ function Register({ }) {
     <View style={containers(appSettings).outerPage }>
       <View style={containers(appSettings).formBox}>
         <Text style={[fonts(appSettings).h1]}>Sign Up</Text>
-
+{/* 
         <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 25 }}>
           <TouchableOpacity onPress={() => console.log('Google Login')}>
             <Image source={GoogleIcon} style={{ width: 30, height: 30 }} />
@@ -81,10 +81,10 @@ function Register({ }) {
           <TouchableOpacity onPress={() => console.log('Twitter Login')}>
             <Image source={TwitterIcon} style={{ width: 30, height: 30 }} />
           </TouchableOpacity>
-        </View>
+        </View> */}
 
-        <Text style={{ textAlign: 'center', color: '#fff', marginTop: 50 }}>
-          Or, register with email ...
+        <Text style={{ textAlign: 'center', color: '#fff', marginTop: 30 }}>
+          Register with email ...
         </Text>
 
         <Text style={fonts(appSettings).errorLabel}>{error}</Text>

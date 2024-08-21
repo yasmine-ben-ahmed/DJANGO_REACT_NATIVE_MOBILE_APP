@@ -10,7 +10,6 @@ from managePJ.models import  myProject, parcelle, node, Data
 from rest_framework import status
 from django.contrib.auth.hashers import check_password
 
-
 from django.core.mail import send_mail
 from django.http import JsonResponse
 from rest_framework.decorators import api_view, permission_classes
@@ -121,7 +120,7 @@ class UserLoginView(APIView):
         node_serializer = NodeSerializer(nodes, many=True)
         data_serializer = DataSerializer(data_entries, many=True)
 
-        print("***client_serializer.data",client_serializer.data)
+        #print("***client_serializer.data",client_serializer.data)
 
 
         # Combine the client data and projects data into a single response
@@ -135,44 +134,6 @@ class UserLoginView(APIView):
         }
 
         return Response(response_data, status=status.HTTP_200_OK)
-
-        
-"""        # Check each project and node for 'EXTREME' status
-        for project in client_proj:
-            for node_item in nodes:
-                if node_item.status == 'EXTREME':
-                    subject = 'Alert'
-                    context = {
-                        'client_name': client_obj.firstName,
-                        'node_status': node_item.status,
-                        'node_name': node_item.nom,
-                        'project_name': project.nomp,
-                        'supervisor': supervisor_obj.firstName if supervisor_obj else 'N/A',
-                        'sup_phone': supervisor_obj.phone if supervisor_obj else 'N/A',
-                    }
-                    html_message = render_to_string('alert_email_template.html', context)
-                    plain_message = strip_tags(html_message)
-
-                    # Send the email
-                    send_mail(
-                        subject,
-                        plain_message,
-                        'benahmedyasmin@gmail.com',  # Sender email address
-                        [client_obj.email],  # Recipient email address
-                        html_message=html_message
-                    ) """
-
-"""         # Combine the client data and projects data into a single response
-        response_data = {
-            'client': client_serializer.data,
-            'projects': project_serializer.data,
-            'supervisor': supervisor_serializer.data if supervisor_serializer else None,
-            'parcelles': parcelle_serializer.data,
-            'nodes': node_serializer.data,
-            'data_entries': data_serializer.data,
-        }
-
-        return Response(response_data, status=status.HTTP_200_OK) """
     
 #-----------------------------#
 class EmailAlertView(APIView):
@@ -236,8 +197,6 @@ def reset_password(request):
         plain_message = strip_tags(html_message)  # Fallback to plain text email
         send_mail(subject, plain_message, 'benahmedyasmin@gmail.com', [email], html_message=html_message)
                 
-        # Store the code somewhere, e.g., in the database or cache
-        # Example: In-memory (not recommended for production)
         request.session['reset_code'] = code
         
         return JsonResponse({"message": "Password reset code sent"}, status=200)
@@ -279,7 +238,8 @@ def verify_code_and_reset_password(request):
         # Get the user and update the password
         try:
             user = client.objects.get(email=email)
-            user.password = make_password(new_password)
+            #user.password = make_password(new_password)   hashed password secure
+            user.password = new_password
             user.save()
             
             print("Password updated successfully")
@@ -294,6 +254,45 @@ def verify_code_and_reset_password(request):
     except Exception as e:
         print(f"Exception occurred: {str(e)}")
         return JsonResponse({"error": str(e)}, status=500)
+    
+
+@api_view(['POST'])
+def update_profile(request, pk):
+    try:
+        data = json.loads(request.body)
+        email = data.get('email')
+        firstName = data.get('firstName')
+        lastName = data.get('lastName')
+        phone = data.get('phone')
+        pseudo = data.get('pseudo')
+        
+        # Debugging logs
+        """ print(f"Received email: {email}")
+        print(f"Received firstname: {firstName}") """
+        
+        # Get the user and update the password
+        try:
+            user = client.objects.get(pk=pk)
+            user.email = email
+            user.firstName = firstName  
+            user.lastName = lastName
+            user.phone = phone
+            user.pseudo = pseudo
+            user.save()
+            
+            print("Data updated successfully")
+            return JsonResponse({"message": "Data updated successfully"}, status=200)
+        except User.DoesNotExist:
+            print("User not found")
+            return JsonResponse({"error": "User not found"}, status=404)
+        
+    except json.JSONDecodeError:
+        print("Invalid JSON received")
+        return JsonResponse({"error": "Invalid JSON"}, status=400)
+    except Exception as e:
+        print(f"Exception occurred: {str(e)}")
+        return JsonResponse({"error": str(e)}, status=500)
+    
 
     
 

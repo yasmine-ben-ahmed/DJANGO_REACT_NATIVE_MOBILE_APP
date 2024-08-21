@@ -1,22 +1,24 @@
 import React, { useContext } from 'react';
-import { View, Text, StyleSheet, Image, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, Image, ImageBackground, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome'; // Import Icon library
 import { Context } from "../globalContext/globalContext.js";
 
 import containers from "../styles/containers.js";
 
-const defaultImageUri = 'http://192.168.0.120:8000/static/images/user.jpg';
+
+
 
 const ProfileScreen = ({ navigation }) => {
   const globalContext = useContext(Context);
-  const { userObj, appSettings } = globalContext;
-
-  const handleStart = () => {
-    navigation.navigate('Home');
+  const { userObj, appSettings,domain } = globalContext;
+  const defaultImageUri = `${domain}/static/images/user.jpg`;
+  const handleEditProfile = () => {
+    navigation.navigate('EditProfile');
   };
 
   return (
     <ImageBackground
-      source={{ uri: `http://192.168.0.120:8000/static/index/images/3.jpg` }}
+      source={{ uri: `${domain}/static/index/images/3.jpg` }}
       style={containers(appSettings).background}
       imageStyle={containers(appSettings).backgroundImage}
     >
@@ -26,7 +28,7 @@ const ProfileScreen = ({ navigation }) => {
             <Image
               source={{
                 uri: userObj.image
-                  ? `http://192.168.0.120:8000/static${userObj.image}`
+                  ? `${domain}/static${userObj.image}`
                   : defaultImageUri,
               }}
               style={containers(appSettings).profileImage}
@@ -53,6 +55,12 @@ const ProfileScreen = ({ navigation }) => {
               <Text style={containers(appSettings).userDetailLabel}>Pseudo:</Text>
               <Text style={containers(appSettings).userDetailValue}>{userObj.pseudo}</Text>
             </View>
+
+            {/* Edit Profile Button */}
+            <TouchableOpacity style={containers(appSettings).editButton} onPress={handleEditProfile}>
+              <Icon name="edit" size={20} color="#fff" />
+              <Text style={containers(appSettings).editButtonText}>Edit Profile</Text>
+            </TouchableOpacity>
           </View>
         ) : (
           <Text style={containers(appSettings).noDataText}>No user data available</Text>

@@ -232,6 +232,40 @@ const containers = (appSettings) => StyleSheet.create({
         marginTop: 40,
       },
 
+      editButton: {
+        flexDirection: 'row', // Align items in a row
+        alignItems: 'center', // Center items vertically
+        marginTop: 20,
+        backgroundColor: '#005B59',
+        paddingVertical: 12,
+        paddingHorizontal: 25,
+        borderRadius: 25,
+        elevation: 3,
+      },
+      editButtonText: {
+        color: '#fff',
+        marginLeft: 10,
+      },
+
+      inputRow: {
+        flexDirection: 'row', 
+        alignItems: 'center', 
+        marginBottom: 10, 
+      },
+      label: {
+        fontSize: 16,
+        marginRight: 10, 
+        width: '30%', 
+      },
+      input: {
+        flex: 1, 
+        borderWidth: 1,
+        borderColor: '#ccc',
+        padding: 5,
+        borderRadius: 5,
+        color:'#999'
+      },
+
         /* ***************** forgotpassword.js ******************* */
         iconContainer: {
           borderRadius: 100, 

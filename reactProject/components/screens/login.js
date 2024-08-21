@@ -110,7 +110,7 @@ function Login({ navigation }) {
           <Text style={{ textAlign: 'center', color: '#fff' }}>Forgot Password?</Text>
         </TouchableOpacity>
 
-        <Text style={{ textAlign: 'center', color: '#CCC', marginTop: 30 }}>
+{/*         <Text style={{ textAlign: 'center', color: '#CCC', marginTop: 30 }}>
           Or, login with ...
         </Text>
 
@@ -124,7 +124,7 @@ function Login({ navigation }) {
           <TouchableOpacity onPress={() => console.log('Twitter Login')}>
             <Image source={TwitterIcon} style={{ width: 30, height: 30 }} />
           </TouchableOpacity>
-        </View>
+        </View> */}
 
         <View style={{ flexDirection: 'row', justifyContent: 'center', margin: 40 }}>
           <Text style={{ color: '#CCC'}}>New to the app?</Text>

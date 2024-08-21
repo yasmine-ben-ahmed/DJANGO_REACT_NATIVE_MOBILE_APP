@@ -11,7 +11,8 @@ import ProjectDetails from '../screens/projectDetails.js';
 import ForgotPassword from '../screens/forgotPassword.js';
 import ResetPassword from '../screens/resetPassword.js';
 import Map from '../screens/map.js';
-import TabNavigator from './TabNavigator'; // Import the TabNavigator
+import EditProfile from '../screens/EditProfile.js';
+import TabNavigator from './TabNavigator'; 
 
 const Stack = createNativeStackNavigator();
 
@@ -111,7 +112,17 @@ function Navigator(props) {
             })}
           />
 
-<Stack.Screen
+          <Stack.Screen
+            name="EditProfile"
+            component={EditProfile}
+            options={({ navigation }) => ({
+              ...headerHome,
+              ...backButton(navigation),
+            })}
+          />
+
+
+        <Stack.Screen
             name="Home"
             component={TabNavigator}
             options={({ navigation }) => ({

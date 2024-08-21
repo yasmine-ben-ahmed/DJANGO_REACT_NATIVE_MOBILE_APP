@@ -1,6 +1,5 @@
 from django.urls import path
-from .views import   UserLoginView, reset_password, verify_code_and_reset_password, EmailAlertView
-from rest_framework_jwt.views import refresh_jwt_token, verify_jwt_token
+from .views import   UserLoginView, reset_password, verify_code_and_reset_password, EmailAlertView, update_profile
 from userAPI.views import UserView
 
 
@@ -10,6 +9,7 @@ urlpatterns = [
     path('verify_code_and_reset_password/', verify_code_and_reset_password, name='verify_code_and_reset_password'),
     path('client/', UserLoginView.as_view()),
     path('send-email-alert/', EmailAlertView.as_view(), name='send-email-alert'),
+    path('update_profile/<int:pk>/', update_profile, name='update_profile'),
 ]
 
 
